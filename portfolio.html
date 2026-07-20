@@ -777,10 +777,6 @@
     }
 
     @media (max-width:900px) {
-      .nav-links {
-        display: none;
-      }
-
       .about-grid,
       .edu-cert-grid {
         grid-template-columns: 1fr;
@@ -800,8 +796,122 @@
         justify-content: flex-start;
       }
 
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
       section {
         padding: 90px 6%;
+      }
+
+      .about-grid p {
+        text-align: left;
+      }
+
+      .contact h2 br {
+        display: none;
+      }
+    }
+
+    @media (max-width:600px) {
+      section {
+        padding: 70px 6%;
+      }
+
+      .hero p {
+        max-width: 100%;
+      }
+
+      .btn {
+        padding: 13px 20px;
+        font-size: 11px;
+      }
+
+      .cluster {
+        padding: 30px 22px;
+      }
+
+      .contact h2 {
+        max-width: 100%;
+      }
+
+      footer {
+        line-height: 1.7;
+      }
+    }
+
+    /* ---------- Mobile nav ---------- */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 101;
+      position: relative;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    @media (max-width:900px) {
+      .logo {
+        font-size: 12px;
+        max-width: 60vw;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        background: rgba(6, 6, 6, .98);
+        backdrop-filter: blur(14px);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .45s cubic-bezier(.22, 1, .36, 1), opacity .35s ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        letter-spacing: .12em;
       }
     }
 
@@ -912,7 +1022,10 @@
 
   <nav>
     <div class="logo">AI Engineer / Data Scientist</div>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -1404,6 +1517,30 @@
         setTimeout(() => document.getElementById('loader').classList.add('hidden'), 400);
       });
       setTimeout(() => document.getElementById('loader').classList.add('hidden'), 2400);
+    })();
+  </script>
+
+  <script>
+  <script>
+    // ---- Mobile nav toggle ----
+    (function () {
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      const closeMenu = () => {
+        toggle.classList.remove('active');
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      };
+      toggle.addEventListener('click', () => {
+        const isOpen = links.classList.toggle('open');
+        toggle.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) closeMenu();
+      });
     })();
   </script>
 
