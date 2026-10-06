@@ -210,6 +210,7 @@
     .nav-toggle.active span:nth-child(2) { opacity: 0; }
     .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
+<<<<<<< HEAD
     @media (max-width: 900px) {
       .logo { font-size: 14px; max-width: 60vw; }
       .nav-toggle { display: flex; }
@@ -221,6 +222,212 @@
       }
       .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
       .nav-links a { font-size: 26px; font-weight: 300; letter-spacing: -.02em; padding: 8px 20px; }
+=======
+    .cert-item {
+      padding: 0;
+    }
+
+    .cert-link {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 16px 20px;
+      width: 100%;
+      color: var(--dim);
+      transition: color .25s ease, background .25s ease;
+    }
+
+    .cert-link::before {
+      content: '—';
+      color: var(--faint);
+      font-family: var(--mono);
+      flex-shrink: 0;
+    }
+
+    .cert-link:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, .03);
+    }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      background: rgba(10, 10, 10, .55);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      padding-bottom: 90px;
+    }
+
+    .contact h2 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      max-width: 780px;
+      margin: 0 auto 30px;
+      letter-spacing: -.01em;
+    }
+
+    .contact h2 .accent {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--dim);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 34px 5%;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--faint);
+      border-top: 1px solid var(--line);
+      letter-spacing: .05em;
+    }
+
+    @media (max-width:900px) {
+      .about-grid,
+      .edu-cert-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .skills-clusters {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .project-stack {
+        justify-content: flex-start;
+      }
+
+      .exp-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      section {
+        padding: 90px 6%;
+      }
+
+      .about-grid p {
+        text-align: left;
+      }
+
+      .contact h2 br {
+        display: none;
+      }
+    }
+
+    @media (max-width:600px) {
+      section {
+        padding: 70px 6%;
+      }
+
+      .hero p {
+        max-width: 100%;
+      }
+
+      .btn {
+        padding: 13px 20px;
+        font-size: 11px;
+      }
+
+      .cluster {
+        padding: 30px 22px;
+      }
+
+      .contact h2 {
+        max-width: 100%;
+      }
+
+      footer {
+        line-height: 1.7;
+      }
+    }
+
+    /* ---------- Mobile nav ---------- */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 101;
+      position: relative;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    @media (max-width:900px) {
+      .logo {
+        font-size: 12px;
+        max-width: 60vw;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        background: rgba(6, 6, 6, .98);
+        backdrop-filter: blur(14px);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .45s cubic-bezier(.22, 1, .36, 1), opacity .35s ease;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        letter-spacing: .12em;
+      }
+>>>>>>> c30bdce28ccffafdeb5612bc5c93bd248abf6d43
     }
 
     /* ---------- Reveal on scroll (fade only, no scale) ---------- */
@@ -695,6 +902,10 @@
   </script>
 
   <script>
+<<<<<<< HEAD
+=======
+  <script>
+>>>>>>> c30bdce28ccffafdeb5612bc5c93bd248abf6d43
     // ---- Mobile nav toggle ----
     (function () {
       const toggle = document.getElementById('navToggle');
